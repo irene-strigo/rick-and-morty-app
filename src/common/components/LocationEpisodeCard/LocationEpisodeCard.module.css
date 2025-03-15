@@ -1,0 +1,7 @@
+.boldText{
+    font-weight: bold;
+}
+.locationEpisodeContainer{
+    border-bottom: 1px solid var(--slate-400);
+    padding:10px;
+}
