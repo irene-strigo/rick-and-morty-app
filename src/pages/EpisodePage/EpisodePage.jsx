@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {LocationEpisodeCard} from "../../common/components/LocationEpisodeCard/LocationEpisodeCard.jsx";
 
 
 export const EpisodePage = () => {
@@ -14,7 +15,7 @@ export const EpisodePage = () => {
     useEffect(() => {
         fetchData("https://rickandmortyapi.com/api/episode")
     }, [])
-
+let titles = ['Эпизод:','Название эпизода:','Дата выхода эпизода в эфир:','Список персонажей, которые были замечены в эпизоде:']
     return (
         <>
             <h1 className={"pageTitle"}>EpisodePage</h1>
@@ -23,15 +24,7 @@ export const EpisodePage = () => {
                     <div className={"pageContainer"}>
                         {episodes.map((episode) => {
                             return (
-                                <div key={episode.id} className={"locationEpisodeContainer"}>
-                                    <ul>
-                                        <li> Эпизод: <span className={"boldText"}>{episode.episode}</span></li>
-                                        <li> Название эпизода: <span className={"boldText"}> {episode.name}</span></li>
-                                        <li> Дата выхода эпизода в эфир: <span className={"boldText"}>{episode.air_date}</span></li>
-                                        <li> Список персонажей, которые были замечены в эпизоде:<span
-                                            className={"boldText"}> {episode.characters.length}</span></li>
-                                    </ul>
-                                </div>
+                                <LocationEpisodeCard data = {episode} titles = {titles} key={episode.id} data1={episode.episode} data2={episode.name} data3={episode.air_date} data4={episode.characters.length}/>
                             )
                         })}
                     </div>

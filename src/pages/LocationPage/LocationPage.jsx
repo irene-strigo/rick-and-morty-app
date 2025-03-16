@@ -15,6 +15,9 @@ export const LocationPage = () => {
     useEffect(() => {
         fetchData("https://rickandmortyapi.com/api/location")
     }, [])
+    let titles = ['Название локации:','Тип локации:','Измерение, в котором находится местоположение:','Количество персонажей, которых видели в данной локации:']
+
+
     return (
         <>
             <h1 className={"pageTitle"}>LocationPage</h1>
@@ -22,9 +25,8 @@ export const LocationPage = () => {
                 (
                     <div className={"pageContainer"}>
                         {locations.map((location) => {
-                            {console.log(location.id,location.name,location.dimension)}
                             return (
-                                    <LocationEpisodeCard key={location.id} name={location.name} type={location.type} dimension={location.dimension} residents={location.residents.length}/>
+                            <LocationEpisodeCard data = {location} titles = {titles} key={location.id} data1={location.name} data2={location.type} data3={location.dimension} data4={location.residents.length}/>
                             )
                         })}
                     </div>
